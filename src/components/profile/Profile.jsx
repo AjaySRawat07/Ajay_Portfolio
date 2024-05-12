@@ -1,13 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
+import Resume from "../../assets/Ajay-resume.pdf"
 import "./profile.css"
 import ajayPhoto from "../../assets/Ajay.png"
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 
 const ProfileSection = () => {
-  const handleResumeClick = () => {
-    window.open('../../assets/Ajay-resume.pdf');
-  };
 
 
   const handleContactClick = () => {
@@ -15,7 +13,7 @@ const ProfileSection = () => {
   };
 
   const handleLinkedInClick = () => {
-    window.location.href = 'linkedin.com/in/ajay-singh-rawat-736044253';
+    window.location.href = 'https://www.linkedin.com/in/ajay-singh-rawat-736044253';
   };
 
   const handleGithubClick = () => {
@@ -33,9 +31,9 @@ const ProfileSection = () => {
         <h1 className="title text-white text-6xl">Ajay Singh Rawat</h1>
         <p className="section__text__p2 text-slate-500 text-4xl">Frontend Developer</p>
         <div className="btn-container">
-          <button className="btn btn-color-2 text-white pt-2" onClick={handleResumeClick}>
+          <a className="btn btn-color-2 text-white pt-2" download={Resume} >
             Download CV
-          </button>
+          </a>
           <button className="btn btn-color-1 pt-2" onClick={handleContactClick}>
             <a href="#footer">Contact Info</a>
           </button>
