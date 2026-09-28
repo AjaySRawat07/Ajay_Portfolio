@@ -1,5 +1,12 @@
 import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/Footer";
+import { Hero } from "../components/sections/Hero";
+import { About } from "../components/sections/About";
+import { Experience } from "../components/sections/Experience";
+import { Projects } from "../components/sections/Projects";
+import { Skills } from "../components/sections/Skills";
+import { Highlights } from "../components/sections/Highlights";
+import { Contact } from "../components/sections/Contact";
 
 export default function Home() {
   return (
@@ -16,22 +23,17 @@ export default function Home() {
           zIndex: -1
         }}
       />
-      {/* Ambient glow for contact section will be added there */}
 
       <Navbar />
 
-      <main className="pt-[72px]">
-        <section id="home" className="h-[780px] flex items-center justify-center">
-          <h1 className="text-text">Hero Placeholder</h1>
-        </section>
-        
-        {/* Placeholder sections for scroll spy */}
-        <section id="about" className="h-[500px]" />
-        <section id="experience" className="h-[500px]" />
-        <section id="projects" className="h-[500px]" />
-        <section id="skills" className="h-[500px]" />
-        <section id="highlights" className="h-[500px]" />
-        <section id="contact" className="h-[500px]" />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Highlights />
+        <Contact />
       </main>
 
       <Footer />
