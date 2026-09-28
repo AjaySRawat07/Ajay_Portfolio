@@ -41,11 +41,37 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${instrumentSerif.variable} ${manrope.variable} ${jetbrainsMono.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Ajay Singh Rawat",
+                "url": process.env.NEXT_PUBLIC_SITE_URL || "https://ajay-portfolio-seven.vercel.app",
+                "jobTitle": "Software Engineer",
+                "sameAs": [
+                  "https://github.com/AjaySRawat07"
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Ajay Singh Rawat | Portfolio",
+                "url": process.env.NEXT_PUBLIC_SITE_URL || "https://ajay-portfolio-seven.vercel.app"
+              }
+            ])
+          }}
+        />
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"
           enableSystem={false}
         >
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:p-4 focus:bg-background focus:text-text">
+            Skip to content
+          </a>
           {children}
         </ThemeProvider>
       </body>

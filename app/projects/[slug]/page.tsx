@@ -33,7 +33,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
     <div className="relative overflow-hidden min-h-screen">
       <Navbar />
 
-      <main className="pt-[140px] pb-[88px] max-md:py-[100px] max-w-[1440px] mx-auto px-[20px] md:px-[48px] 2xl:px-[96px]">
+      <main id="main-content" className="pt-[140px] pb-[88px] max-md:py-[100px] max-w-[1440px] mx-auto px-[20px] md:px-[48px] 2xl:px-[96px]">
         <Reveal>
           <Link href="/#projects" className="inline-flex items-center gap-2 font-sans font-medium text-[14px] text-muted hover:text-text transition-colors mb-12">
             <ArrowLeft size={16} /> All projects
