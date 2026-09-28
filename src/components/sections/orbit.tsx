@@ -84,9 +84,7 @@ export function OrbitStage() {
                   onFocus={() => setIsPaused(true)}
                   onBlur={() => setIsPaused(false)}
                 >
-                  <div className="animate-spin-self will-change-transform" style={{ "--spin-duration": spinDurations[idx % spinDurations.length], animationDirection: idx % 2 === 0 ? "normal" : "reverse" } as React.CSSProperties}>
-                    <Icon name={node.icon as any} className="w-[18px] h-[18px]" />
-                  </div>
+                  <Icon name={node.icon as any} className="w-[18px] h-[18px]" />
                 </motion.div>
               </TooltipTrigger>
               <TooltipContent>
@@ -124,9 +122,7 @@ export function OrbitStage() {
                   onFocus={() => setIsPaused(true)}
                   onBlur={() => setIsPaused(false)}
                 >
-                  <div className="animate-spin-self will-change-transform" style={{ "--spin-duration": spinDurations[(idx + ring1Nodes.length) % spinDurations.length], animationDirection: idx % 2 === 0 ? "reverse" : "normal" } as React.CSSProperties}>
-                    <Icon name={node.icon as any} className="w-[18px] h-[18px]" />
-                  </div>
+                  <Icon name={node.icon as any} className="w-[18px] h-[18px]" />
                 </motion.div>
               </TooltipTrigger>
               <TooltipContent>
