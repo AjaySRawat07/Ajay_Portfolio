@@ -6,18 +6,40 @@ import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal } from "../animations/Reveal";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
+import { contactSchema, type ContactFormData } from "../../lib/validations";
+import { ZodError } from "zod";
 
 export const Contact = () => {
   const [status, setStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = React.useState("");
+  const [fieldErrors, setFieldErrors] = React.useState<Partial<Record<keyof ContactFormData, string>>>({});
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
     setErrorMessage("");
+    setFieldErrors({});
 
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
+
+    // Client-side validation
+    try {
+      contactSchema.parse(data);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const errors: any = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            errors[err.path[0]] = err.message;
+          }
+        });
+        setFieldErrors(errors);
+        setStatus("error");
+        setErrorMessage("Please fix the errors in the form.");
+        return;
+      }
+    }
 
     try {
       const res = await fetch("/api/contact", {
@@ -96,9 +118,12 @@ export const Contact = () => {
                         id="name"
                         name="name"
                         required
+                        aria-invalid={!!fieldErrors.name}
+                        aria-describedby={fieldErrors.name ? "name-error" : undefined}
                         className="h-[48px] rounded-[10px] bg-bg border border-border-strong px-4 text-[15px] text-text placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg transition-shadow"
                         placeholder="Your name"
                       />
+                      {fieldErrors.name && <span id="name-error" className="text-red-500 text-[12px]">{fieldErrors.name}</span>}
                     </div>
                     <div className="flex flex-col gap-2">
                       <label htmlFor="email" className="font-sans text-[13px] font-medium text-text">Email</label>
@@ -107,9 +132,12 @@ export const Contact = () => {
                         name="email"
                         type="email"
                         required
+                        aria-invalid={!!fieldErrors.email}
+                        aria-describedby={fieldErrors.email ? "email-error" : undefined}
                         className="h-[48px] rounded-[10px] bg-bg border border-border-strong px-4 text-[15px] text-text placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg transition-shadow"
                         placeholder="you@company.com"
                       />
+                      {fieldErrors.email && <span id="email-error" className="text-red-500 text-[12px]">{fieldErrors.email}</span>}
                     </div>
                   </div>
 
@@ -119,9 +147,12 @@ export const Contact = () => {
                       id="subject"
                       name="subject"
                       required
+                      aria-invalid={!!fieldErrors.subject}
+                      aria-describedby={fieldErrors.subject ? "subject-error" : undefined}
                       className="h-[48px] rounded-[10px] bg-bg border border-border-strong px-4 text-[15px] text-text placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg transition-shadow"
                       placeholder="What is this about?"
                     />
+                    {fieldErrors.subject && <span id="subject-error" className="text-red-500 text-[12px]">{fieldErrors.subject}</span>}
                   </div>
 
                   <div className="flex flex-col gap-2">
@@ -130,16 +161,19 @@ export const Contact = () => {
                       id="message"
                       name="message"
                       required
+                      aria-invalid={!!fieldErrors.message}
+                      aria-describedby={fieldErrors.message ? "message-error" : undefined}
                       className="min-h-[120px] rounded-[10px] bg-bg border border-border-strong p-4 text-[15px] text-text placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg transition-shadow resize-y"
                       placeholder="Tell me about the problem you are solving"
                     />
+                    {fieldErrors.message && <span id="message-error" className="text-red-500 text-[12px]">{fieldErrors.message}</span>}
                   </div>
 
                   {/* Honeypot */}
                   <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
 
-                  <div aria-live="polite" className="mt-2">
-                    {status === "error" && (
+                  <div aria-live="polite" className="mt-2 min-h-[20px]">
+                    {status === "error" && !Object.keys(fieldErrors).length && (
                       <p className="text-red-500 text-[14px]">{errorMessage}</p>
                     )}
                     {status === "success" && (
