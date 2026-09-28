@@ -39,13 +39,13 @@ const rawSite = {
       "I have 3+ years of experience designing, building, and shipping production-grade web applications end-to-end. I work daily across ReactJS, Next.js, TypeScript, and Node.js to build robust REST APIs and scalable, secure client experiences. I am passionate about clean technical documentation, rigorous test automation, and engineering software that performs flawlessly under pressure."
     ],
   },
-  skills: [ // any number of groups; grid auto-fits
+  skills: [
     { title: "Frontend",        icon: "layout-template", items: ["ReactJS", "Next.js", "Redux", "Zustand", "Tailwind CSS"] },
-    { title: "Backend",         icon: "server",          items: ["Node.js", "Express.js", "REST API", "Prisma ORM"] },
-    { title: "Data",            icon: "database",        items: ["PostgreSQL", "MongoDB", "SQL", "Supabase"] },
+    { title: "Backend",         icon: "server",          items: ["Node.js", "Express.js", "REST APIs", "Prisma ORM", "TypeScript"] },
+    { title: "Databases",       icon: "database",        items: ["PostgreSQL", "MongoDB", "SQL", "Supabase"] },
     { title: "Cloud & DevOps",  icon: "cloud-cog",       items: ["Docker", "GitHub Actions", "CI/CD", "Vercel", "Linux"] },
-    { title: "Languages",       icon: "code",            items: ["JavaScript", "TypeScript", "Python", "C++", "C#"] },
-    { title: "Testing",         icon: "test-tubes",      items: ["Jest", "Playwright", "Unit Testing", "Integration Testing"] },
+    { title: "Tools & Testing", icon: "test-tubes",      items: ["Jest", "Playwright", "Unit Testing", "Integration Testing", "Git"] },
+    { title: "Security",        icon: "shield-check",    items: ["Access Controls", "Audit Trails", "Data Encryption", "Secure File Sharing"] },
   ],
   experience: [
     { dates: "April 2024 — Present", title: "Software Engineer", org: "Vaultize Technologies",
