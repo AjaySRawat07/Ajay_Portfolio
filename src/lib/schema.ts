@@ -47,10 +47,28 @@ export const siteSchema = z.object({
     items: z.array(z.string()),
   })),
   experience: z.array(z.object({
-    dates: z.string(),
-    title: z.string(),
     org: z.string(),
-    bullets: z.array(z.string()),
+    orgUrl: z.string().optional(),
+    location: z.string(),
+    type: z.string(),
+    current: z.boolean(),
+    dates: z.string(),
+    duration: z.string(),
+    roles: z.array(z.object({
+      title: z.string(),
+      dates: z.string(),
+      bullets: z.array(z.string()),
+    })),
+    metrics: z.array(z.object({
+      value: z.string(),
+      label: z.string(),
+    })).optional(),
+    companyProjects: z.array(z.object({
+      title: z.string(),
+      description: z.string(),
+      stack: z.array(z.string()),
+    })).optional(),
+    stack: z.array(z.string()).optional(),
   })),
   education: z.array(z.object({
     dates: z.string(),
@@ -65,12 +83,14 @@ export const siteSchema = z.object({
     note: z.string().optional(),
   })).optional(),
   projects: z.array(z.object({
-    slug: z.string(),
-    index: z.string(),
+    slug: z.string().optional(),
     title: z.string(),
     summary: z.string(),
     stack: z.array(z.string()),
-    href: z.string(),
+    links: z.object({
+      live: z.string(),
+      repo: z.string(),
+    }).optional(),
     draft: z.boolean(),
     caseStudy: z.object({
       problem: z.string(),

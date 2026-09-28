@@ -48,20 +48,53 @@ const rawSite = {
     { title: "Security",        icon: "shield-check",    items: ["Access Controls", "Audit Trails", "Data Encryption", "Secure File Sharing"] },
   ],
   experience: [
-    { dates: "April 2024 — Present", title: "Software Engineer", org: "Vaultize Technologies",
-      bullets: [
-        "Engineered 15+ reusable ReactJS components for an enterprise file-sharing platform, cutting feature delivery time by 30%.",
-        "Designed and executed 200+ test cases using Jest and Playwright for unit and integration testing, reducing production bugs by 40%.",
-        "Led the migration from client-side to server-side rendering with Next.js, improving page load speed by 45%.",
-        "Optimized real-time document review features to sustain 100,000+ requests/hour and 100+ concurrent users with zero production downtime.",
-        "Implemented access controls and audit trails to reinforce security across the codebase, driving a 20% increase in user engagement."
-      ] 
+    {
+      org: "Vaultize Technologies",
+      orgUrl: "",
+      location: "Pune, India",
+      type: "Full-time",
+      current: true,
+      dates: "April 2024 — Present",
+      duration: "6 mos",
+      roles: [
+        {
+          title: "Software Engineer",
+          dates: "April 2024 — Present",
+          bullets: [
+            "Engineered 15+ reusable ReactJS components for an enterprise file-sharing platform, cutting feature delivery time by 30%.",
+            "Designed and executed 200+ test cases using Jest and Playwright for unit and integration testing, reducing production bugs by 40%.",
+            "Led the migration from client-side to server-side rendering with Next.js, improving page load speed by 45%.",
+            "Optimized real-time document review features to sustain 100,000+ requests/hour and 100+ concurrent users with zero production downtime.",
+            "Implemented access controls and audit trails to reinforce security across the codebase, driving a 20% increase in user engagement."
+          ]
+        }
+      ],
+      companyProjects: [
+        {
+          title: "Enterprise File Sharing",
+          description: "Enterprise clients required a highly secure, performant, and reliable file-sharing platform capable of handling real-time document reviews at scale, with strict access controls and zero downtime.",
+          stack: ["React", "Next.js", "Security", "REST API"]
+        }
+      ]
     },
-    { dates: "June 2023 — February 2024", title: "Full Stack Development Apprentice", org: "Geekster",
-      bullets: [
-        "Developed and deployed 8+ full-stack MERN applications covering REST API design, relational database modeling, and responsive UI development.",
-        "Secured first place in a competitive hackathon by architecting and shipping a polished OTT streaming platform.",
-        "Solved 250+ Data Structures & Algorithms problems in Java and C++, applying optimization patterns to front-end performance."
+    {
+      org: "Geekster",
+      orgUrl: "",
+      location: "Remote",
+      type: "Apprenticeship",
+      current: false,
+      dates: "June 2023 — February 2024",
+      duration: "9 mos",
+      roles: [
+        {
+          title: "Full Stack Development Apprentice",
+          dates: "June 2023 — February 2024",
+          bullets: [
+            "Developed and deployed 8+ full-stack MERN applications covering REST API design, relational database modeling, and responsive UI development.",
+            "Secured first place in a competitive hackathon by architecting and shipping a polished OTT streaming platform.",
+            "Solved 250+ Data Structures & Algorithms problems in Java and C++, applying optimization patterns to front-end performance."
+          ]
+        }
       ]
     },
   ],
@@ -71,18 +104,8 @@ const rawSite = {
   ],
   achievements: [],
   projects: [
-    { slug: "enterprise-file-sharing", index: "01", title: "Enterprise File Sharing",
-      summary: "Case study covering the problem, my approach and the outcome for an enterprise file-sharing platform.",
-      stack: ["React", "Next.js", "Security", "REST API"], href: "/projects/enterprise-file-sharing", draft: false,
-      caseStudy: { 
-        problem: "Enterprise clients required a highly secure, performant, and reliable file-sharing platform capable of handling real-time document reviews at scale, with strict access controls and zero downtime.", 
-        approach: "Led the migration to Next.js for server-side rendering, engineered 15+ reusable ReactJS components, and implemented rigorous automated testing using Jest and Playwright to ensure platform stability. I also architected robust access controls and audit trails.", 
-        outcome: "Improved page load speed by 45%, reduced production bugs by 40%, and optimized the system to effortlessly sustain 100,000+ requests per hour and 100+ concurrent users with zero downtime.", 
-        role: "Software Engineer focusing on front-end performance, component architecture, and test automation." 
-      } 
-    },
-    { slug: "talentgraph", index: "02", title: "TalentGraph", summary: "AI-powered resume builder with JD-tailored suggestions and PDF export.", stack: ["Next.js", "TypeScript", "OpenAI API", "Supabase", "Zustand"], href: "https://talentgraph.netlify.app", draft: false },
-    { slug: "finance-management-system", index: "03", title: "Finance Management System", summary: "Full-stack expense tracker with AI-powered summaries and real-time charts.", stack: ["Next.js", "Prisma", "Inngest", "Supabase"], href: "https://finance-buddy-murex.vercel.app", draft: false },
+    { title: "[Project 1]", summary: "[One-line description]", stack: ["[Stack]"], links: { live: "", repo: "" }, draft: true },
+    { title: "[Project 2]", summary: "[One-line description]", stack: ["[Stack]"], links: { live: "", repo: "" }, draft: true },
   ],
   contact: {
     heading: { before: "Let's build ", em: "together." },
