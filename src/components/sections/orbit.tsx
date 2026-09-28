@@ -77,7 +77,7 @@ export function OrbitStage() {
                   initial={{ scale: reducedMotion ? 1 : 0 }}
                   animate={{ scale: 1 }}
                   transition={reducedMotion ? { duration: 0 } : { duration: 0.6, delay: 1 + idx * 0.1, type: "spring", bounce: 0.4 }}
-                  className="w-full h-full rounded-full bg-secondary border border-border grid place-items-center text-accent transition-colors duration-300 hover:border-accent animate-orbit-60-rev will-change-transform"
+                  className="w-full h-full rounded-full bg-secondary border border-border grid place-items-center text-accent transition-colors duration-300 hover:border-accent will-change-transform"
                   style={{ animationPlayState: isPaused ? "paused" : "running" }}
                   onMouseEnter={() => setIsPaused(true)}
                   onMouseLeave={() => setIsPaused(false)}
@@ -115,7 +115,7 @@ export function OrbitStage() {
                   initial={{ scale: reducedMotion ? 1 : 0 }}
                   animate={{ scale: 1 }}
                   transition={reducedMotion ? { duration: 0 } : { duration: 0.6, delay: 1.2 + idx * 0.1, type: "spring", bounce: 0.4 }}
-                  className="w-full h-full rounded-full bg-secondary border border-border grid place-items-center text-accent transition-colors duration-300 hover:border-accent animate-orbit-44 will-change-transform"
+                  className="w-full h-full rounded-full bg-secondary border border-border grid place-items-center text-accent transition-colors duration-300 hover:border-accent will-change-transform"
                   style={{ animationPlayState: isPaused ? "paused" : "running" }}
                   onMouseEnter={() => setIsPaused(true)}
                   onMouseLeave={() => setIsPaused(false)}
