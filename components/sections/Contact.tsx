@@ -29,7 +29,7 @@ export const Contact = () => {
     } catch (error) {
       if (error instanceof ZodError) {
         const errors: any = {};
-        error.errors.forEach((err) => {
+        error.errors.forEach((err: any) => {
           if (err.path[0]) {
             errors[err.path[0]] = err.message;
           }
