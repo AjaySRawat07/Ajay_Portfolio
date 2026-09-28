@@ -180,7 +180,7 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-[8px] px-[20px] py-[10px] border border-foreground rounded-full no-underline text-[0.86rem] bg-foreground text-background transition-all duration-250 hover:bg-accent hover:border-accent hover:text-white disabled:opacity-50"
+                  className="btn-primary"
                 >
                   Send message <Icon name="send" className="w-[16px] h-[16px]" />
                 </button>

@@ -25,7 +25,7 @@ export function Nav() {
         <ThemeToggle />
         <Link 
           href={site.nav.cta.href} 
-          className="inline-flex items-center gap-[8px] px-[20px] py-[10px] border border-foreground rounded-full no-underline text-[0.86rem] bg-foreground text-background transition-all duration-250 hover:bg-accent hover:border-accent hover:text-white"
+          className="btn-primary"
         >
           {site.nav.cta.label} <Icon name="arrow-up-right" className="w-4 h-4" />
         </Link>

@@ -162,3 +162,21 @@ a {
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-[8px] px-[20px] py-[10px] border border-primary rounded-full no-underline text-[0.86rem] bg-primary text-primary-foreground transition-all duration-250 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-[3px] focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none;
+    box-shadow: 0 10px 30px -12px color-mix(in srgb, var(--color-primary) 70%, transparent);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px -10px color-mix(in srgb, var(--color-primary) 80%, transparent);
+  }
+  .dark .btn-primary:hover {
+    filter: brightness(1.1);
+  }
+  .light .btn-primary:hover,
+  [data-theme="light"] .btn-primary:hover {
+    filter: brightness(0.95);
+  }
+}

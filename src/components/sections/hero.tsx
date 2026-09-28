@@ -90,7 +90,7 @@ export function Hero() {
             <a
               href={site.person.resume.file}
               download
-              className="inline-flex items-center gap-[8px] px-[20px] py-[10px] border border-foreground rounded-full no-underline text-[0.86rem] bg-foreground text-background transition-all duration-250 hover:bg-accent hover:border-accent hover:text-white"
+              className="btn-primary"
             >
               <Icon name="download" className="w-4 h-4" /> {site.person.resume.label}
             </a>
