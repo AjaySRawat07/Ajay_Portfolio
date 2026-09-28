@@ -12,17 +12,32 @@
   --color-popover: var(--card);
   --color-popover-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-primary-foreground: var(--background);
+  --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--card);
   --color-secondary-foreground: var(--foreground);
   --color-muted: var(--card);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--primary);
-  --color-accent-foreground: var(--background);
+  --color-accent-foreground: var(--primary-foreground);
   --color-destructive: var(--primary);
   --color-destructive-foreground: var(--background);
   --color-border: var(--border);
   --color-input: var(--border);
+
+  --animate-orbit-60: orbit 60s linear infinite;
+  --animate-orbit-60-rev: orbit 60s linear infinite reverse;
+  --animate-orbit-44: orbit 44s linear infinite;
+  --animate-orbit-44-rev: orbit 44s linear infinite reverse;
+  --animate-spin-self: spin-self var(--spin-duration) linear infinite alternate;
+
+  @keyframes orbit {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes spin-self {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
   --color-ring: var(--primary);
 
   --color-accent-2: var(--accent-2);
@@ -51,6 +66,7 @@
   --foreground: #e8ebf1;
   --muted-foreground: #8a94a6;
   --primary: #7c9cff;
+  --primary-foreground: #0b0f16;
   --accent-2: #5eead4;
   --border: rgba(255, 255, 255, 0.1);
   --radius: 0.5rem;
@@ -63,6 +79,7 @@
   --foreground: #12161d;
   --muted-foreground: #5e6675;
   --primary: #3a5bd9;
+  --primary-foreground: #ffffff;
   --accent-2: #0f9d8a;
   --border: rgba(18, 22, 29, 0.13);
 }
@@ -74,6 +91,7 @@
     --foreground: #12161d;
     --muted-foreground: #5e6675;
     --primary: #3a5bd9;
+    --primary-foreground: #ffffff;
     --accent-2: #0f9d8a;
     --border: rgba(18, 22, 29, 0.13);
   }

@@ -11,21 +11,19 @@ export function OrbitStage() {
   const reducedMotion = useReducedMotion();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [hasPhoto, setHasPhoto] = useState(!!site.person.photo.src);
 
   const springConfig = { stiffness: 120, damping: 20 };
   const parallaxX = useSpring(mouseX, springConfig);
   const parallaxY = useSpring(mouseY, springConfig);
 
-  const [hasPhoto, setHasPhoto] = useState(!!site.person.photo.src);
-
   useEffect(() => {
     if (reducedMotion) return;
-
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set((e.clientX / window.innerWidth - 0.5) * 22);
       mouseY.set((e.clientY / window.innerHeight - 0.5) * 22);
     };
-
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [mouseX, mouseY, reducedMotion]);
@@ -52,60 +50,90 @@ export function OrbitStage() {
     };
   };
 
+  const spinDurations = ["8s", "10s", "12s", "9s"];
+
   return (
     <motion.div
       className="relative w-[min(100%,460px)] aspect-square mx-auto"
       style={{ x: parallaxX, y: parallaxY }}
     >
+      {/* Ring 1 */}
       <motion.div
         initial={{ scale: reducedMotion ? 1 : 0.7, opacity: reducedMotion ? 1 : 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={getTransition(0.3)}
         className="absolute inset-0 rounded-full border border-border animate-orbit-60"
+        style={{ animationPlayState: isPaused ? "paused" : "running" }}
       >
         {ring1Nodes.map((node, idx) => (
-          <Tooltip key={idx}>
-            <TooltipTrigger asChild>
-              <motion.div
-                initial={{ scale: reducedMotion ? 1 : 0 }}
-                animate={{ scale: 1 }}
-                transition={reducedMotion ? { duration: 0 } : { duration: 0.6, delay: 1 + idx * 0.1, type: "spring", bounce: 0.4 }}
-                className="absolute w-[42px] h-[42px] -m-[21px] rounded-full bg-secondary border border-border grid place-items-center text-accent transition-colors duration-300 hover:border-accent [animation:rot_60s_linear_infinite_reverse]"
-                style={getNodeStyle(node.position)}
-              >
-                <Icon name={node.icon as any} className="w-[18px] h-[18px]" />
-              </motion.div>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{node.label}</p>
-            </TooltipContent>
-          </Tooltip>
+          <div
+            key={idx}
+            className="absolute w-[42px] h-[42px] -m-[21px] grid place-items-center"
+            style={getNodeStyle(node.position)}
+          >
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <motion.div
+                  initial={{ scale: reducedMotion ? 1 : 0 }}
+                  animate={{ scale: 1 }}
+                  transition={reducedMotion ? { duration: 0 } : { duration: 0.6, delay: 1 + idx * 0.1, type: "spring", bounce: 0.4 }}
+                  className="w-full h-full rounded-full bg-secondary border border-border grid place-items-center text-accent transition-colors duration-300 hover:border-accent animate-orbit-60-rev will-change-transform"
+                  style={{ animationPlayState: isPaused ? "paused" : "running" }}
+                  onMouseEnter={() => setIsPaused(true)}
+                  onMouseLeave={() => setIsPaused(false)}
+                  onFocus={() => setIsPaused(true)}
+                  onBlur={() => setIsPaused(false)}
+                >
+                  <div className="animate-spin-self will-change-transform" style={{ "--spin-duration": spinDurations[idx % spinDurations.length], animationDirection: idx % 2 === 0 ? "normal" : "reverse" } as React.CSSProperties}>
+                    <Icon name={node.icon as any} className="w-[18px] h-[18px]" />
+                  </div>
+                </motion.div>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{node.label}</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
         ))}
       </motion.div>
 
+      {/* Ring 2 */}
       <motion.div
         initial={{ scale: reducedMotion ? 1 : 0.7, opacity: reducedMotion ? 1 : 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={getTransition(0.42)}
-        className="absolute inset-[15%] rounded-full border border-dashed border-border animate-orbit-44-rev"
+        className="absolute inset-[10%] rounded-full border border-dashed border-border animate-orbit-44-rev"
+        style={{ animationPlayState: isPaused ? "paused" : "running" }}
       >
         {ring2Nodes.map((node, idx) => (
-          <Tooltip key={idx}>
-            <TooltipTrigger asChild>
-              <motion.div
-                initial={{ scale: reducedMotion ? 1 : 0 }}
-                animate={{ scale: 1 }}
-                transition={reducedMotion ? { duration: 0 } : { duration: 0.6, delay: 1.2 + idx * 0.1, type: "spring", bounce: 0.4 }}
-                className="absolute w-[42px] h-[42px] -m-[21px] rounded-full bg-secondary border border-border grid place-items-center text-accent transition-colors duration-300 hover:border-accent [animation:rot_44s_linear_infinite]"
-                style={getNodeStyle(node.position)}
-              >
-                <Icon name={node.icon as any} className="w-[18px] h-[18px]" />
-              </motion.div>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{node.label}</p>
-            </TooltipContent>
-          </Tooltip>
+          <div
+            key={idx}
+            className="absolute w-[42px] h-[42px] -m-[21px] grid place-items-center"
+            style={getNodeStyle(node.position)}
+          >
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <motion.div
+                  initial={{ scale: reducedMotion ? 1 : 0 }}
+                  animate={{ scale: 1 }}
+                  transition={reducedMotion ? { duration: 0 } : { duration: 0.6, delay: 1.2 + idx * 0.1, type: "spring", bounce: 0.4 }}
+                  className="w-full h-full rounded-full bg-secondary border border-border grid place-items-center text-accent transition-colors duration-300 hover:border-accent animate-orbit-44 will-change-transform"
+                  style={{ animationPlayState: isPaused ? "paused" : "running" }}
+                  onMouseEnter={() => setIsPaused(true)}
+                  onMouseLeave={() => setIsPaused(false)}
+                  onFocus={() => setIsPaused(true)}
+                  onBlur={() => setIsPaused(false)}
+                >
+                  <div className="animate-spin-self will-change-transform" style={{ "--spin-duration": spinDurations[(idx + ring1Nodes.length) % spinDurations.length], animationDirection: idx % 2 === 0 ? "reverse" : "normal" } as React.CSSProperties}>
+                    <Icon name={node.icon as any} className="w-[18px] h-[18px]" />
+                  </div>
+                </motion.div>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{node.label}</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
         ))}
       </motion.div>
 
@@ -113,14 +141,14 @@ export function OrbitStage() {
         initial={{ scale: reducedMotion ? 1 : 0.7, opacity: reducedMotion ? 1 : 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={getTransition(0.54)}
-        className="absolute inset-[28%] rounded-full border border-border"
+        className="absolute inset-[19%] rounded-full border border-border"
       />
 
       <motion.div
         initial={{ scale: reducedMotion ? 1 : 0.7, opacity: reducedMotion ? 1 : 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={getTransition(0.66)}
-        className="absolute inset-[34%] rounded-full border border-border grid place-items-center text-center overflow-hidden"
+        className="absolute inset-[26%] rounded-full border border-border grid place-items-center text-center overflow-hidden"
         style={{
           background: "linear-gradient(145deg, var(--color-card), color-mix(in srgb, var(--color-primary) 18%, var(--color-card)))",
           boxShadow: "0 30px 80px -30px var(--color-primary)",
