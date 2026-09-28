@@ -25,7 +25,7 @@ export function Reveal({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: reducedMotion ? 0 : 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: reducedMotion ? 0 : 0.8, delay, ease: [0.22, 1, 0.36, 1] as const }}
       className={className}
     >
       {children}
@@ -42,7 +42,7 @@ export function SectionHeader({ index, title }: { index: string; title: string }
         initial={{ y: reducedMotion ? 0 : 24, opacity: reducedMotion ? 1 : 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true, margin: "-10%" }}
-        transition={{ duration: reducedMotion ? 0 : 0.8, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: reducedMotion ? 0 : 0.8, ease: [0.22, 1, 0.36, 1] as const }}
         className="mono"
       >
         {index}
@@ -51,7 +51,7 @@ export function SectionHeader({ index, title }: { index: string; title: string }
         initial={{ y: reducedMotion ? 0 : 24, opacity: reducedMotion ? 1 : 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true, margin: "-10%" }}
-        transition={{ duration: reducedMotion ? 0 : 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: reducedMotion ? 0 : 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] as const }}
         className="text-[clamp(2rem,4.5vw,3.2rem)] font-serif"
       >
         {title}
@@ -60,7 +60,7 @@ export function SectionHeader({ index, title }: { index: string; title: string }
         initial={{ scaleX: reducedMotion ? 1 : 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true, margin: "-10%" }}
-        transition={{ duration: reducedMotion ? 0 : 1.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: reducedMotion ? 0 : 1.2, ease: [0.22, 1, 0.36, 1] as const }}
         className="flex-1 h-[1px] bg-border origin-left"
       />
     </div>
