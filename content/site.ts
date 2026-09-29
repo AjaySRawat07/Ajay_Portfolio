@@ -10,7 +10,7 @@ const rawSite = {
     role: "Software Engineer",
     company: "Vaultize Technologies",
     email: "ajay.work72@gmail.com",
-    location: "Pune, India",
+    location: "India",
     yearsExperience: "3+ years",
     photo: { src: "/images/ajay.jpg", alt: "Portrait of Ajay Singh Rawat", objectPosition: "50% 30%" },
     resume: { file: "/resume/Ajay-Singh-Rawat-Resume.pdf", label: "Resume" },
@@ -21,15 +21,15 @@ const rawSite = {
     lead: "I design and build secure, dependable software for enterprise file sharing, with a focus on clean engineering and calm, considered interfaces.",
     secondaryCta: { label: "View selected work", href: "#projects" },
     meta: [
-      { label: "Focus", value: "Enterprise file sharing" },
-      { label: "Based in", value: "Pune, India" },
+      { label: "Focus", value: "MERN, PERN stack" },
+      { label: "Based in", value: "India" },
       { label: "Experience", value: "3+ years" },
     ],
     orbit: [ // icon = lucide name; ring = 1 | 2; position = top | bottom | left | right
-      { icon: "lock-keyhole", ring: 1, position: "top",    label: "Security" },
-      { icon: "cloud",        ring: 1, position: "bottom", label: "Cloud" },
-      { icon: "share-2",      ring: 2, position: "left",   label: "Sharing" },
-      { icon: "shield-check", ring: 2, position: "right",  label: "Protection" },
+      { icon: "lock-keyhole", ring: 1, position: "top", label: "Security" },
+      { icon: "cloud", ring: 1, position: "bottom", label: "Cloud" },
+      { icon: "share-2", ring: 2, position: "left", label: "Sharing" },
+      { icon: "shield-check", ring: 2, position: "right", label: "Protection" },
     ],
   },
   about: {
@@ -40,12 +40,12 @@ const rawSite = {
     ],
   },
   skills: [
-    { title: "Frontend",        icon: "layout-template", items: ["ReactJS", "Next.js", "Redux", "Zustand", "Tailwind CSS"] },
-    { title: "Backend",         icon: "server",          items: ["Node.js", "Express.js", "REST APIs", "Prisma ORM", "TypeScript"] },
-    { title: "Databases",       icon: "database",        items: ["PostgreSQL", "MongoDB", "SQL", "Supabase"] },
-    { title: "Cloud & DevOps",  icon: "cloud-cog",       items: ["Docker", "GitHub Actions", "CI/CD", "Vercel", "Linux"] },
-    { title: "Tools & Testing", icon: "test-tubes",      items: ["Jest", "Playwright", "Unit Testing", "Integration Testing", "Git"] },
-    { title: "Security",        icon: "shield-check",    items: ["Access Controls", "Audit Trails", "Data Encryption", "Secure File Sharing"] },
+    { title: "Frontend", icon: "layout-template", items: ["ReactJS", "Next.js", "Redux", "Zustand", "Tailwind CSS"] },
+    { title: "Backend", icon: "server", items: ["Node.js", "Express.js", "REST APIs", "Prisma ORM", "TypeScript"] },
+    { title: "Databases", icon: "database", items: ["PostgreSQL", "MongoDB", "SQL", "Supabase"] },
+    { title: "Cloud & DevOps", icon: "cloud-cog", items: ["Docker", "GitHub Actions", "CI/CD", "Vercel", "Linux"] },
+    { title: "Tools & Testing", icon: "test-tubes", items: ["Jest", "Playwright", "Unit Testing", "Integration Testing", "Git"] },
+    { title: "Security", icon: "shield-check", items: ["Access Controls", "Audit Trails", "Data Encryption", "Secure File Sharing"] },
   ],
   experience: [
     {
@@ -55,25 +55,25 @@ const rawSite = {
       type: "Full-time",
       current: true,
       dates: "April 2024 — Present",
-      duration: "6 mos",
+      duration: "2 yrs 7 mos",
       roles: [
         {
           title: "Software Engineer",
           dates: "April 2024 — Present",
           bullets: [
-            "Engineered 15+ reusable ReactJS components for an enterprise file-sharing platform, cutting feature delivery time by 30%.",
-            "Designed and executed 200+ test cases using Jest and Playwright for unit and integration testing, reducing production bugs by 40%.",
-            "Led the migration from client-side to server-side rendering with Next.js, improving page load speed by 45%.",
-            "Optimized real-time document review features to sustain 100,000+ requests/hour and 100+ concurrent users with zero production downtime.",
-            "Implemented access controls and audit trails to reinforce security across the codebase, driving a 20% increase in user engagement."
+            "Developed 15+ reusable React.js components for an enterprise file-sharing platform (EFSS), reducing feature delivery time by 30%.",
+            "Contributed to DRM functionality, implementing secure document-sharing workflows, role-based access controls, and permission-based restrictions to protect sensitive enterprise data.",
+            "Designed and executed 200+ Jest and Playwright test cases, reducing production bugs by 40%.",
+            "Migrated key workflows to Next.js SSR, improving page load speed by 45%.",
+            "Optimized real-time document collaboration to handle 100,000+ requests/hour and 100+ concurrent users with zero production downtime."
           ]
         }
       ],
       companyProjects: [
         {
-          title: "Enterprise File Sharing",
-          description: "Enterprise clients required a highly secure, performant, and reliable file-sharing platform capable of handling real-time document reviews at scale, with strict access controls and zero downtime.",
-          stack: ["React", "Next.js", "Security", "REST API"]
+          title: "Enterprise File Sharing (EFSS + DRM)",
+          description: "Enhanced an enterprise-grade file-sharing platform with Digital Rights Management (DRM), secure document access, permission-based sharing, and audit trails to strengthen data protection, document governance, and collaboration.",
+          stack: ["React.js", "Next.js", "Node.js", "REST APIs", "Jest", "Playwright", "EFSS", "DRM"]
         }
       ]
     },
@@ -90,9 +90,9 @@ const rawSite = {
           title: "Full Stack Development Apprentice",
           dates: "June 2023 — February 2024",
           bullets: [
-            "Developed and deployed 8+ full-stack MERN applications covering REST API design, relational database modeling, and responsive UI development.",
-            "Secured first place in a competitive hackathon by architecting and shipping a polished OTT streaming platform.",
-            "Solved 250+ Data Structures & Algorithms problems in Java and C++, applying optimization patterns to front-end performance."
+            "Developed and deployed 8+ full-stack MERN applications, implementing REST APIs, database integration, authentication, and responsive UI development.",
+            "Secured 1st place in a competitive hackathon by architecting and delivering a fully functional OTT streaming platform.",
+            "Collaborated on real-world development tasks, debugging, code reviews, and application optimization while strengthening full-stack engineering skills."
           ]
         }
       ]
@@ -104,15 +104,39 @@ const rawSite = {
   ],
   achievements: [],
   projects: [
-    { title: "[Project 1]", summary: "[One-line description]", stack: ["[Stack]"], links: { live: "", repo: "" }, draft: true },
-    { title: "[Project 2]", summary: "[One-line description]", stack: ["[Stack]"], links: { live: "", repo: "" }, draft: true },
+    {
+      title: "TalentGraph",
+      summary: "AI-powered resume builder generating job-description-tailored suggestions with custom PDF export.",
+      stack: ["Next.js", "TypeScript", "OpenAI", "Supabase", "Zustand", "Tailwind CSS"],
+      links: { live: "https://talentgraph.netlify.app/", repo: "" },
+      draft: false,
+      caseStudy: {
+        problem: "Creating tailored resumes manually is time-consuming and often lacks specific job description keywords needed for ATS optimization.",
+        approach: "Integrated the OpenAI API for context-aware content generation and Supabase for secure authentication. Built a reusable 20-component UI library and established a complete CI/CD pipeline.",
+        outcome: "Launched a production-ready application in under 6 weeks, reducing average resume creation time by 70% compared to manual drafting.",
+        role: "Full Stack Engineer"
+      }
+    },
+    {
+      title: "Finance Management System",
+      summary: "Full-stack expense tracker featuring AI-powered financial summaries, automated receipt scanning, and real-time analytics.",
+      stack: ["Next.js", "TypeScript", "Prisma", "Inngest", "Supabase"],
+      links: { live: "https://finance-buddy-murex.vercel.app/", repo: "" },
+      draft: false,
+      caseStudy: {
+        problem: "Users struggle to efficiently track and categorize expenses, leading to poor financial insights and time spent on manual data entry.",
+        approach: "Architected a scalable full-stack solution with automated scheduled alerts and secure authentication. Implemented robust GitHub Actions CI/CD for reliable deployments.",
+        outcome: "Optimized Prisma and PostgreSQL queries to handle 500+ transactions with sub-200ms query response times, achieving 3x faster data retrieval.",
+        role: "Full Stack Engineer"
+      }
+    },
   ],
   contact: {
     heading: { before: "Let's build ", em: "together." },
     socials: [
-      { icon: "github",   label: "GitHub",   href: "https://github.com/AjaySRawat07" },
+      { icon: "github", label: "GitHub", href: "https://github.com/AjaySRawat07" },
       { icon: "linkedin", label: "LinkedIn", href: "https://linkedin.com/in/engineer-ajay" },
-      { icon: "mail",     label: "Email",    href: "mailto:ajay.work72@gmail.com" },
+      { icon: "mail", label: "Email", href: "mailto:ajay.work72@gmail.com" },
     ],
   },
   seo: {

@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     if (ip !== "unknown") {
       const now = Date.now();
       const current = rateLimitMap.get(ip);
-      
+
       if (!current || current.expiresAt < now) {
         rateLimitMap.set(ip, { count: 1, expiresAt: now + RATE_LIMIT_WINDOW });
       } else {

@@ -149,8 +149,18 @@ h3 {
   line-height: 1.05;
 }
 
-a {
-  color: inherit;
+@layer base {
+  a {
+    @apply text-inherit;
+  }
+  
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 .mono {
@@ -162,33 +172,28 @@ a {
   color: var(--primary);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-[8px] px-[20px] py-[10px] border border-primary rounded-full no-underline text-[0.86rem] bg-primary text-primary-foreground transition-all duration-250 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-[3px] focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none;
-    box-shadow: 0 10px 30px -12px color-mix(in srgb, var(--color-primary) 70%, transparent);
+    @apply inline-flex items-center justify-center gap-[8px] px-[24px] py-[12px] rounded-full no-underline text-[0.92rem] font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-[3px] focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none;
+    
+    background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 80%, white), var(--primary));
+    color: #ffffff !important;
+    border: 1px solid color-mix(in srgb, var(--primary) 60%, transparent);
+    box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--primary) 40%, transparent),
+                inset 0 1px 1px 0 color-mix(in srgb, white 25%, transparent);
+    text-shadow: 0 1px 2px color-mix(in srgb, black 20%, transparent);
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 15px 40px -10px color-mix(in srgb, var(--color-primary) 80%, transparent);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 60%, white), var(--primary));
+    box-shadow: 0 8px 24px 0 color-mix(in srgb, var(--primary) 60%, transparent),
+                inset 0 1px 1px 0 color-mix(in srgb, white 35%, transparent);
   }
 
-  .dark .btn-primary:hover {
-    filter: brightness(1.1);
-  }
-
-  .light .btn-primary:hover,
-  [data-theme="light"] .btn-primary:hover {
-    filter: brightness(0.95);
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px 0 color-mix(in srgb, var(--primary) 40%, transparent),
+                inset 0 2px 4px 0 color-mix(in srgb, black 15%, transparent);
   }
 }

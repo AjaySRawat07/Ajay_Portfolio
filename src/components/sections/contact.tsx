@@ -44,16 +44,16 @@ export function Contact() {
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true);
     setStatusMsg("Sending...");
-    
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      
+
       const json = await res.json();
-      
+
       if (!res.ok) {
         if (res.status === 503) {
           setStatusMsg("Contact form is not connected yet.");
@@ -78,14 +78,14 @@ export function Contact() {
   return (
     <section id="contact" className="max-w-[1120px] mx-auto px-[max(5vw,20px)] pt-[110px] pb-[10px]">
       <SectionHeader index="05" title="Contact" />
-      
+
       <Reveal>
         <h2 className="font-serif text-[clamp(3rem,10vw,7.5rem)] tracking-tight mb-[34px] leading-[1.05]">
           {site.contact.heading.before}
           <em className="text-accent not-italic italic">{site.contact.heading.em}</em>
         </h2>
       </Reveal>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[50px]">
         <Reveal delay={0.1}>
           <p className="text-muted-foreground mt-0 mb-0">{site.person.email}</p>
@@ -122,7 +122,7 @@ export function Contact() {
                   )}
                 />
               </div>
-              
+
               <FormField
                 control={form.control}
                 name="name"
