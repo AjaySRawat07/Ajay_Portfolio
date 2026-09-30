@@ -4,10 +4,12 @@ import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
-import { Experience } from "@/components/sections/experience";
-import { Education } from "@/components/sections/education";
-import { Projects } from "@/components/sections/projects";
-import { Contact } from "@/components/sections/contact";
+import dynamic from "next/dynamic";
+
+const Experience = dynamic(() => import("@/components/sections/experience").then(m => m.Experience), { ssr: true });
+const Education = dynamic(() => import("@/components/sections/education").then(m => m.Education), { ssr: true });
+const Projects = dynamic(() => import("@/components/sections/projects").then(m => m.Projects), { ssr: true });
+const Contact = dynamic(() => import("@/components/sections/contact").then(m => m.Contact), { ssr: true });
 
 export default function Home() {
   return (
