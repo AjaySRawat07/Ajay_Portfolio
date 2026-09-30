@@ -22,6 +22,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: true }, { status: 200 });
     }
 
+    if (!process.env.RESEND_API_KEY || !process.env.RESEND_FROM || !process.env.CONTACT_TO) {
+      console.error("Missing environment variables for Resend");
+      return NextResponse.json({ error: "Server configuration error: Missing API keys" }, { status: 500 });
+    }
+
     if (!name || !email || !message) {
       return NextResponse.json({ error: "All fields are required" }, { status: 400 });
     }

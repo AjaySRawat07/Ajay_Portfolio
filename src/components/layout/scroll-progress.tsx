@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useScroll, useSpring } from "motion/react";
+import { LazyMotion, domAnimation, m, useScroll, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
 
 export function ScrollProgress() {
@@ -19,9 +19,11 @@ export function ScrollProgress() {
   if (!mounted) return null;
 
   return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-[2px] bg-accent origin-left z-50"
-      style={{ scaleX }}
-    />
+    <LazyMotion features={domAnimation}>
+      <m.div
+        className="fixed top-0 left-0 right-0 h-[2px] bg-accent origin-left z-50"
+        style={{ scaleX }}
+      />
+    </LazyMotion>
   );
 }
