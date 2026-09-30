@@ -15,6 +15,12 @@ import {
   TestTubes,
   Mail,
   Send,
+  MapPin,
+  Briefcase,
+  Building2,
+  Check,
+  FolderLock,
+  ExternalLink,
 } from "lucide-react";
 import * as React from "react";
 
@@ -74,6 +80,12 @@ export const icons = {
   "linkedin": Linkedin,
   "mail": Mail,
   "send": Send,
+  "map-pin": MapPin,
+  "briefcase": Briefcase,
+  "building-2": Building2,
+  "check": Check,
+  "folder-lock": FolderLock,
+  "external-link": ExternalLink,
 } as const;
 
 export type IconName = keyof typeof icons | (string & {});

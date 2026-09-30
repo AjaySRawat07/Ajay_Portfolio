@@ -112,6 +112,7 @@ export const siteSchema = z.object({
     description: z.string(),
     url: z.string(),
     ogImageAlt: z.string(),
+    keywords: z.array(z.string()).optional(),
   }),
   footer: z.object({
     left: z.string(),

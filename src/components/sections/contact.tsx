@@ -22,7 +22,7 @@ const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(80),
   email: z.string().email("Please enter a valid email"),
   message: z.string().min(10, "Message must be at least 10 characters").max(2000),
-  honey: z.string().max(0).optional(), // honeypot
+  website: z.string().max(0).optional(), // honeypot
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -37,7 +37,7 @@ export function Contact() {
       name: "",
       email: "",
       message: "",
-      honey: "",
+      website: "",
     },
   });
 
@@ -112,7 +112,7 @@ export function Contact() {
               <div className="hidden">
                 <FormField
                   control={form.control}
-                  name="honey"
+                  name="website"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>

@@ -12,13 +12,13 @@ const rawSite = {
     email: "ajay.work72@gmail.com",
     location: "India",
     yearsExperience: "3+ years",
-    photo: { src: "/images/ajay.jpg", alt: "Portrait of Ajay Singh Rawat", objectPosition: "50% 30%" },
+    photo: { src: "/images/ajay.jpg", alt: "Ajay Singh Rawat — Full Stack Developer & Software Engineer", objectPosition: "50% 30%" },
     resume: { file: "/resume/Ajay-Singh-Rawat-Resume.pdf", label: "Resume" },
   },
   nav: { cta: { label: "Hire me", href: "#contact" } },
   hero: {
     eyebrow: "Software Engineer · Vaultize Technologies",
-    lead: "I design and build secure, dependable software for enterprise file sharing, with a focus on clean engineering and calm, considered interfaces.",
+    lead: "I am a Full Stack Developer in Pune specializing in MERN and PERN stack applications with Next.js and TypeScript. I design and build secure, dependable software for enterprise systems, with a focus on clean engineering and calm, considered interfaces.",
     secondaryCta: { label: "View selected work", href: "#projects" },
     meta: [
       { label: "Focus", value: "MERN, PERN stack" },
@@ -35,8 +35,8 @@ const rawSite = {
   about: {
     statement: { before: "Software built to be ", em: "secure", after: ", dependable and a pleasure to use." },
     paragraphs: [
-      "I'm a Full-stack Software Engineer at Vaultize Technologies, working on enterprise file-sharing products.",
-      "I have 3+ years of experience designing, building, and shipping production-grade web applications end-to-end. I work daily across ReactJS, Next.js, TypeScript, and Node.js to build robust REST APIs and scalable, secure client experiences. I am passionate about clean technical documentation, rigorous test automation, and engineering software that performs flawlessly under pressure."
+      "I'm a Full-stack Software Engineer at Vaultize Technologies, working on enterprise file-sharing products. As a freelance full stack developer India relies on for high-performance applications, I specialize in building MERN and PERN stack applications.",
+      "I have 3+ years of experience designing, building, and shipping production-grade web applications end-to-end. I work daily across ReactJS, Next.js, TypeScript, and Node.js to build robust REST APIs and scalable, secure client experiences. Whether you need to hire a full stack developer for complex architecture or reliable frontend performance, I am passionate about rigorous test automation and engineering software that performs flawlessly."
     ],
   },
   skills: [
@@ -140,9 +140,23 @@ const rawSite = {
     ],
   },
   seo: {
-    title: "Ajay Singh Rawat — Software Engineer",
-    description: "Ajay Singh Rawat, Software Engineer at Vaultize Technologies, building secure enterprise file-sharing software.",
-    url: "https://ajay-portfolio-seven.vercel.app", ogImageAlt: "Ajay Singh Rawat — Software Engineer",
+    title: "Ajay Singh Rawat | Full Stack Developer & Software Engineer",
+    description: "Ajay Singh Rawat is a top Full Stack Developer in Pune, India specializing in MERN & PERN stack applications using Next.js, React, and TypeScript.",
+    url: "https://ajay-portfolio-seven.vercel.app", 
+    ogImageAlt: "Ajay Singh Rawat — Full Stack Developer & Software Engineer",
+    keywords: [
+      "Ajay Singh Rawat",
+      "Full Stack Developer",
+      "Software Engineer",
+      "React Developer",
+      "Next.js Developer",
+      "MERN Stack Developer",
+      "PERN Stack Developer",
+      "full stack developer in Pune",
+      "hire full stack developer",
+      "best Next.js developer",
+      "freelance full stack developer India"
+    ],
   },
   footer: { left: "© 2026 Ajay Singh Rawat", right: "Software Engineer · Vaultize Technologies" },
 };

@@ -1,74 +1,65 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { z } from "zod";
 
-const contactSchema = z.object({
-  name: z.string().min(2).max(80),
-  email: z.string().email(),
-  message: z.string().min(10).max(2000),
-  honey: z.string().max(0).optional(),
-});
+export const runtime = 'nodejs';
 
-// Simple in-memory rate limiting (Note: in multi-instance production, use Upstash Redis)
-const rateLimitMap = new Map<string, { count: number; expiresAt: number }>();
-const RATE_LIMIT_WINDOW = 10 * 60 * 1000; // 10 minutes
-const MAX_REQUESTS = 5;
+function escapeHtml(unsafe: string) {
+  if (typeof unsafe !== 'string') return '';
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
 export async function POST(req: Request) {
   try {
-    const { RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL } = process.env;
-
-    if (!RESEND_API_KEY || !CONTACT_TO_EMAIL || !CONTACT_FROM_EMAIL) {
-      return NextResponse.json({ error: "not_configured" }, { status: 503 });
-    }
-
-    // Rate Limiting
-    const ip = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "unknown";
-    if (ip !== "unknown") {
-      const now = Date.now();
-      const current = rateLimitMap.get(ip);
-
-      if (!current || current.expiresAt < now) {
-        rateLimitMap.set(ip, { count: 1, expiresAt: now + RATE_LIMIT_WINDOW });
-      } else {
-        if (current.count >= MAX_REQUESTS) {
-          return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
-        }
-        current.count += 1;
-      }
-    }
-
     const body = await req.json();
-    const parsed = contactSchema.safeParse(body);
+    const { name, email, message, website } = body;
 
-    if (!parsed.success) {
-      return NextResponse.json({ error: "Invalid data provided." }, { status: 400 });
+    if (website) {
+      return NextResponse.json({ ok: true }, { status: 200 });
     }
 
-    const { name, email, message, honey } = parsed.data;
-
-    if (honey && honey.length > 0) {
-      // Honeypot triggered
-      return NextResponse.json({ success: true }, { status: 200 });
+    if (!name || !email || !message) {
+      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
     }
 
-    const resend = new Resend(RESEND_API_KEY);
+    if (message.length > 5000) {
+      return NextResponse.json({ error: "Message must be under 5000 characters" }, { status: 400 });
+    }
 
-    const { error } = await resend.emails.send({
-      from: CONTACT_FROM_EMAIL,
-      to: CONTACT_TO_EMAIL,
-      subject: `New Contact Request from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: "Invalid email format" }, { status: 400 });
+    }
+
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeMessage = escapeHtml(message);
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const { data, error } = await resend.emails.send({
+      from: process.env.RESEND_FROM as string,
+      to: process.env.CONTACT_TO as string,
+      replyTo: safeEmail,
+      subject: `New portfolio message from ${safeName}`,
+      html: `<p><strong>Name:</strong> ${safeName}</p>
+             <p><strong>Email:</strong> ${safeEmail}</p>
+             <p><strong>Message:</strong></p>
+             <p>${safeMessage.replace(/\n/g, '<br/>')}</p>`,
     });
 
     if (error) {
-      console.error(error);
-      return NextResponse.json({ error: "Failed to send message." }, { status: 500 });
+      console.error("Resend error:", error);
+      return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
     }
 
-    return NextResponse.json({ success: true }, { status: 200 });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "An unexpected error occurred." }, { status: 500 });
+    return NextResponse.json({ ok: true, data }, { status: 200 });
+  } catch (err) {
+    console.error("API Error:", err);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

@@ -30,6 +30,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: site.seo.title,
   description: site.seo.description,
+  keywords: site.seo.keywords,
   metadataBase: new URL(site.seo.url),
   openGraph: {
     title: site.seo.title,
@@ -61,8 +62,14 @@ export default function RootLayout({
         "@type": "Organization",
         name: site.person.company,
       },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Pune",
+        addressCountry: "India"
+      },
       url: site.seo.url,
       sameAs: site.contact.socials.filter((s) => s.href).map((s) => s.href),
+      knowsAbout: site.skills.flatMap(s => s.items),
     },
     {
       "@context": "https://schema.org",
@@ -70,6 +77,22 @@ export default function RootLayout({
       name: site.seo.title,
       url: site.seo.url,
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      mainEntity: {
+        "@type": "Person",
+        name: site.person.name,
+        identifier: site.person.email,
+        interactionStatistic: [
+          {
+            "@type": "InteractionCounter",
+            interactionType: "https://schema.org/WriteAction",
+            userInteractionCount: site.projects.length
+          }
+        ]
+      }
+    }
   ];
 
   return (
