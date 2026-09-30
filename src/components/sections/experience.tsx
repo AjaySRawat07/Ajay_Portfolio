@@ -2,10 +2,9 @@
 
 import { site } from "@/../content/site";
 import { SectionHeader } from "@/components/motion/reveal";
-import { motion, useScroll, useSpring } from "motion/react";
+import { LazyMotion, domAnimation, m, useScroll, useSpring, useReducedMotion } from "motion/react";
 import { Icon } from "@/lib/icons";
 import { useRef } from "react";
-import { useReducedMotion } from "motion/react";
 
 export function Experience() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,20 +18,21 @@ export function Experience() {
   if (!site.experience || site.experience.length === 0) return null;
 
   return (
-    <section id="experience" className="max-w-[1120px] mx-auto px-[max(5vw,20px)] pt-[110px] pb-[10px]">
-      <SectionHeader index="03" title="Experience" />
+    <LazyMotion features={domAnimation}>
+      <section id="experience" className="max-w-[1120px] mx-auto px-[max(5vw,20px)] pt-[110px] pb-[10px]">
+        <SectionHeader index="03" title="Experience" />
       <div ref={containerRef} className="relative pl-8 md:pl-12">
         {/* Base line */}
         <div className="absolute top-0 bottom-0 left-[11px] md:left-[11px] w-[1px] bg-border origin-top" />
         {/* Progress line */}
-        <motion.div
+        <m.div
           style={{ scaleY, transformOrigin: "top" }}
           className="absolute top-0 bottom-0 left-[11px] md:left-[11px] w-[2px] -ml-[0.5px] bg-gradient-to-b from-primary to-accent-2"
         />
 
         <div className="flex flex-col gap-12">
           {site.experience.map((exp, idx) => (
-            <motion.div
+            <m.div
               key={idx}
               initial={{ y: reducedMotion ? 0 : 36, opacity: reducedMotion ? 1 : 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -41,7 +41,7 @@ export function Experience() {
               className="relative"
             >
               {/* Dot */}
-              <motion.div
+              <m.div
                 initial={{ scale: reducedMotion ? 1 : 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true, margin: "-10%" }}
@@ -89,7 +89,7 @@ export function Experience() {
                       </div>
                       <ul className="m-0 p-0 list-none flex flex-col gap-3">
                         {role.bullets.map((bullet, bIdx) => (
-                          <motion.li
+                          <m.li
                             key={bIdx}
                             initial={{ opacity: reducedMotion ? 1 : 0, y: reducedMotion ? 0 : 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export function Experience() {
                           >
                             <Icon name="check" className="w-[16px] h-[16px] text-primary shrink-0 mt-[3px]" />
                             <span>{bullet}</span>
-                          </motion.li>
+                          </m.li>
                         ))}
                       </ul>
                     </div>
@@ -154,10 +154,11 @@ export function Experience() {
                   </div>
                 )}
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

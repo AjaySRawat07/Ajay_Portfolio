@@ -4,20 +4,21 @@ import { site } from "@/../content/site";
 import { Reveal, SectionHeader } from "@/components/motion/reveal";
 import { Icon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { LazyMotion, domAnimation, m } from "motion/react";
 
 export function Projects() {
   if (site.projects.length === 0) return null;
 
   return (
-    <section id="projects" className="max-w-[1120px] mx-auto px-[max(5vw,20px)] pt-[110px] pb-[10px]">
-      <SectionHeader index="04" title="Selected work" />
+    <LazyMotion features={domAnimation}>
+      <section id="projects" className="max-w-[1120px] mx-auto px-[max(5vw,20px)] pt-[110px] pb-[10px]">
+        <SectionHeader index="04" title="Selected work" />
       <div className="flex flex-col gap-12">
         {site.projects.map((project, idx) => {
           if (project.draft) return null;
 
           return (
-            <motion.div
+            <m.div
               key={idx}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -123,10 +124,11 @@ export function Projects() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           );
         })}
       </div>
     </section>
+    </LazyMotion>
   );
 }
